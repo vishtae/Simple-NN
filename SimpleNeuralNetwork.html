@@ -1,0 +1,35 @@
+#include <stdio.h>
+  
+float gradw1(float x1, float x2, float y,float w1, float w2){
+    float y_w1 = 2*(y-((w1*x1)+(w2*x2)) * (-x1)) ;
+    return y_w1;
+}
+float gradw2(float x1, float x2, float y,float w1, float w2){
+    float y_w2= 2*(y-((w1*x1)+(w2*x2)) * (-x2)) ;
+    return y_w2;
+}
+
+int main() {
+  float gw1,gw2;
+  float sum_gw1 = 0, sum_gw2 = 0;
+  float arr[4][3] = { {0, 1, 1},
+                      {2, 1,9},
+                      {1,0,1},
+                      {-2,1,7}
+                    };
+    float w1 = 0.1, w2 = 0.3 ;
+    for (int i=0; i<4;i++){
+      gw1= gradw1(arr[i][0],arr[i][1],arr[i][2], w1,w2);
+      gw2= gradw2(arr[i][0],arr[i][1],arr[i][2], w1,w2);
+     printf("%f\n%f\n\n", gw1,gw2);
+     sum_gw1 += gw1;
+     sum_gw2 += gw2;
+    }
+    float n = sizeof(arr);
+    printf("size of the array: %f\n",n);
+    float avgw1 = sum_gw1 / n;
+    float avgw2 = sum_gw2 / n;
+    printf("average of w1: %f\naverage of w2: %f\n",avgw1,avgw2);
+   return 0 ;
+   
+}
