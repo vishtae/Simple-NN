@@ -1,28 +1,22 @@
-// Online C compiler to run C program online
 #include <stdio.h>
 #include <math.h>
-
-
 
 float gradw1(float x1, float x2, float y,float w1, float w2){
     
     float y_w1 = 2*(y-((w1*x1)+(w2*x2)) * (-x1)) ;
-   
     return y_w1;
-    
-   
 }
 float gradw2(float x1, float x2, float y,float w1, float w2){
     
-   
-    float y_w2= 2*(y-((w1*x1)+(w2*x2)) * (-x2)) ;
-    
-    return y_w2;
+   float y_w2= 2*(y-((w1*x1)+(w2*x2)) * (-x2)) ;
+   return y_w2;
 }
+    
 float loss_fun(float x1, float x2, float y, float w1, float w2){
-    float Err = (y-((w1*x1)+(w2*x2)));
-    float Error = pow(Err,2);
-    return Error;
+    
+    float loss = (y-((w1*x1)+(w2*x2)));
+    float Error = pow(loss,2);
+    return loss;
 }
 
 int main() {
